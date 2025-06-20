@@ -7,46 +7,45 @@
 </head>
 <body>
 
-  <header>
-     <h1>
-      <a href="index.html" class="name-link">
-      Michaela Srchová
-    </h1>
-    <p>Sportovkyně, trenérka a odbornice na psí sporty</p>
-    <nav>
-      <a href="index.html">Domů</a>
-      <a href="kariera.html">Kariéra</a>
-      <a href="sluzby.html">Služby</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-  </header>
+  <div id="header-container"></div>
+  <div class="container">
+    <div id="menu-container"></div>
 
-  <main>
-    <section>
-      <h2>Kontaktujte mě</h2>
-      <p>Máte dotaz nebo zájem o spolupráci? Napište mi!</p>
+    <main>
+      <section>
+        <h2>Kontakt</h2>
+        <p>Máte dotaz? Napište mi zprávu:</p>
+        <form>
+          <label for="email">Váš e-mail:</label><br>
+          <input type="email" id="email" name="email" placeholder="např. vase@email.cz" required><br><br>
 
-      <form action="#" method="post">
-        <label for="name">Vaše jméno:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+          <label for="message">Zpráva:</label><br>
+          <textarea id="message" name="message" rows="5" placeholder="Sem napište svůj dotaz..." required></textarea><br><br>
 
-        <label for="email">Váš e-mail:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+          <button type="submit">Odeslat</button>
+        </form>
 
-        <label for="message">Zpráva:</label><br>
-        <textarea id="message" name="message" rows="5" required></textarea><br><br>
+        <p>E-mail: <a href="mailto:michaela@srchova.cz">michaela@srchova.cz</a></p>
+      </section>
+    </main>
+  </div>
 
-        <button type="submit">Odeslat</button>
-      </form>
+  <div id="footer-container"></div>
 
-      <p>📧 E-mail: <a href="mailto:michaela@trenerka.cz">michaela@trenerka.cz</a></p>
-      <p>📍 Působím v Praze a okolí, možnost online konzultací po celé ČR.</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Michaela Srchová</p>
-  </footer>
+  <script>
+    const includes = [
+      { id: 'header-container', file: 'header.html' },
+      { id: 'menu-container', file: 'menu.html' },
+      { id: 'footer-container', file: 'footer.html' }
+    ];
+    includes.forEach(({ id, file }) => {
+      fetch(file)
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById(id).innerHTML = data;
+        });
+    });
+  </script>
 
 </body>
 </html>
