@@ -7,63 +7,51 @@
 </head>
 <body>
 
-  <header>
-     <h1>
-      <a href="index.html" class="name-link">
-      Michaela Srchová
-    </h1>
-    <p>Sportovkyně, trenérka a odbornice na psí sporty</p>
-    <nav>
-      <a href="index.html">Domů</a>
-      <a href="kariera.html">Kariéra</a>
-      <a href="sluzby.html">Služby</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-  </header>
+  <div id="header-container"></div>
+  <div class="container">
+    <div id="menu-container"></div>
 
-  <main>
-    <section>
-      <h2>Trenérské a pohybové služby</h2>
+    <main>
+      <section>
+        <h2>Tréninky a kurzy</h2>
+        <p>Nabízím individuální i skupinové tréninky canicrossu a běžecké přípravy. Možnost spolupráce i pro úplné začátečníky.</p>
 
-      <h3>🏃‍♀️ Canicross – tréninky pro začátečníky i pokročilé</h3>
-      <p>
-        Individuální i skupinové lekce, nácvik správné techniky běhu se psem,
-        příprava na závody, posílení kondice člověka i psa.
-      </p>
+        <h3>Skupinové tréninky</h3>
+        <ul>
+          <li>Každé úterý a čtvrtek – Praha – 17:00</li>
+          <li>Zaměřeno na techniku běhu se psem, intervaly, orientaci v terénu</li>
+        </ul>
 
-      <h3>🎽 Kondiční a silová příprava pro sportovce</h3>
-      <p>
-        Plány a tréninky zaměřené na zlepšení výbušnosti, vytrvalosti i koordinace.
-        Vhodné pro dospělé, mládež i sportovní týmy.
-      </p>
+        <h3>Individuální lekce</h3>
+        <p>Po domluvě možné osobně či online – zaměřeno na vaše potřeby a cíle.</p>
+      </section>
 
-      <h3>🎾 Individuální konzultace a poradenství</h3>
-      <p>
-        Pomohu vám sestavit tréninkový plán, upravit techniku, připravit se na závody
-        nebo jen zlepšit pohybové návyky. Konzultace probíhá osobně nebo online.
-      </p>
-    </section>
+      <section>
+        <h2>Workshopy a kempy</h2>
+        <ul>
+          <li>Jarní běžecký kemp – květen 2025</li>
+          <li>Podzimní víkend pro začátečníky i pokročilé</li>
+        </ul>
+      </section>
+    </main>
 
-    <section>
-      <h2>Organizace akcí a tréninkových kempů</h2>
+  </div>
+  <div id="footer-container"></div>
 
-      <h3>🐾 Kempy pro canicrossové týmy</h3>
-      <p>
-        Intenzivní víkendové i týdenní kempy se zaměřením na běžeckou techniku,
-        regeneraci, výživu a týmovou spolupráci. Vhodné pro začátečníky i závodníky.
-      </p>
-
-      <h3>👨‍👩‍👧‍👦 Pohybové aktivity pro rodiny s dětmi</h3>
-      <p>
-        Zábavné aktivity, soutěže, hry a pohybové programy, které rozvíjí vztah dětí ke sportu.
-        Možnost účasti i se psem.
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Michaela Srchová</p>
-  </footer>
+  <script>
+    const includes = [
+      { id: 'header-container', file: 'header.html' },
+      { id: 'menu-container', file: 'menu.html' },
+      { id: 'footer-container', file: 'footer.html' }
+    ];
+    includes.forEach(({ id, file }) => {
+      fetch(file)
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById(id).innerHTML = data;
+        });
+    });
+  </script>
 
 </body>
 </html>
