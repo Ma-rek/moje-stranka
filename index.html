@@ -19,21 +19,22 @@
   <div id="footer-container"></div>
 
   <script>
-    const includes = [
-      { id: 'header-container', file: 'header.html' },
-      { id: 'menu-container', file: 'menu.html' },
-      { id: 'footer-container', file: 'footer.html' }
-    ];
-    includes.forEach(({ id, file }) => {
-      fetch(file)
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById(id).innerHTML = data;
-        });
-    });
-  </script>
+  const includes = [
+    { id: 'header-container', file: 'header.html', callback: initSlideshow },
+    { id: 'menu-container', file: 'menu.html' },
+    { id: 'footer-container', file: 'footer.html' }
+  ];
 
-  <script>
+  includes.forEach(({ id, file, callback }) => {
+    fetch(file)
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById(id).innerHTML = data;
+        if (typeof callback === "function") callback();
+      });
+  });
+
+  function initSlideshow() {
     let slideIndex = 0;
     let slides, dots;
 
@@ -48,18 +49,19 @@
       for (let i = 0; i < dots.length; i++) {
         dots[i].classList.remove("active");
       }
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].classList.add("active");
-      setTimeout(showSlides, 4000);
-    }
-
-    function currentSlide(n) {
-      slideIndex = n - 1;
-      showSlides();
+      if (slides.length > 0) {
+        slides[slideIndex - 1].style.display = "block";
+        if (dots[slideIndex - 1]) {
+          dots[slideIndex - 1].classList.add("active");
+        }
+        setTimeout(showSlides, 4000);
+      }
     }
 
     showSlides();
-  </script>
+  }
+</script>
+
 
 </body>
 </html>
