@@ -7,46 +7,80 @@
 </head>
 <body>
 
-  <header>
-    <h1>
-      <a href="index.html" class="name-link">
-        Michaela 
-        <img src="img/silueta-pes.svg" alt="Pes" class="icon">
-        Srchová
-        <img src="img/lakroska.svg" alt="Lakroska" class="icon">
-      </a>
-    </h1>
-  </header>
-
+  <div id="header-container"></div>
   <div class="container">
     <div id="menu-container"></div>
-      <ul>
-        <li><a href="index.html">Domů</a></li>
-        <li><a href="kariera.html">Kariéra</a></li>
-        <li><a href="sluzby.html">Služby</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-      </ul>
-    </nav>
 
     <main>
       <article>
         <section>
           <h2>Sportovní kariéra</h2>
-          <!-- obsah zůstává -->
+
+          <h3>Začátky a rodinné zázemí</h3>
+          <p>
+            Lakrosu se věnuje od dětství – k tomuto dynamickému týmovému sportu ji přivedla
+            rodina, která dlouhodobě buduje a řídí klub LCC Sokol Radotín...
+          </p>
+
+          <h3>Klubové úspěchy</h3>
+          <p>
+            S LCC Sokol Radotín získala dvanáct titulů mistryň České republiky...
+          </p>
+
+          <h3>Reprezentace v lakrosu</h3>
+          <p>
+            Debutovala na evropském šampionátu v roce 2004 v Praze...
+          </p>
+
+          <h3>Světové hry Birmingham 2022 (lakros Sixes)</h3>
+          <p>
+            Na Světových hrách v americkém Birminghamu sestava šestek obsadila 8. místo...
+          </p>
+
+          <h3>Mushing, canicross a skijöring</h3>
+          <p>
+            Kromě lakrosu reprezentuje Česko i v závodech psích spřežení...
+          </p>
+          <ul>
+            <li>2016: 2. místo (jednotlivci) a 1. místo (štafeta)...</li>
+            <li>2017: vítězství v canicrossu na Trophée des Montagnes (Francie)</li>
+            <li>2017: další medailová umístění...</li>
+          </ul>
         </section>
 
         <section>
           <h2>Pracovní kariéra</h2>
-          <!-- obsah zůstává -->
+
+          <h3>Vzdělání a akademická činnost</h3>
+          <p>
+            V roce 2013 obhájila bakalářskou práci na Pedagogické fakultě UK...
+          </p>
+
+          <h3>Trenérská a lektorská činnost</h3>
+          <p>
+            Jako zkušená trenérka vede projekt „Rozběháme Česko“...
+          </p>
         </section>
       </article>
     </main>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Michaela Srchová</p>
-  </footer>
+  <div id="footer-container"></div>
+
+  <script>
+    const includes = [
+      { id: 'header-container', file: 'header.html' },
+      { id: 'menu-container', file: 'menu.html' },
+      { id: 'footer-container', file: 'footer.html' }
+    ];
+    includes.forEach(({ id, file }) => {
+      fetch(file)
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById(id).innerHTML = data;
+        });
+    });
+  </script>
 
 </body>
 </html>
-
